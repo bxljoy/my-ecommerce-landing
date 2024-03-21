@@ -1,19 +1,29 @@
 import { ReviewCard } from "../components";
+import { reviews } from "../constants";
 
 const CustomerReviews = () => {
   return (
-    <section className="max-container w-full flex flex-col justify-center items-center gap-8">
-      <div className="flex flex-col justify-center items-center gap-4">
-        <h2 className="text-4xl font-palanquin font-bold text-center">
-          What Our <span className="text-coral-red">Customers</span> Say?
-        </h2>
-        <p className="info-text max-w-lg text-center">
-          Hear genuine stories from our satisfied customers about their
-          exceptional experiences with us.
-        </p>
-      </div>
-      <div className="flex-1">
-        <ReviewCard />
+    <section className="max-container">
+      <h3 className="font-palanquin text-center text-4xl font-bold">
+        What Our
+        <span className="text-coral-red"> Customers </span>
+        Say?
+      </h3>
+      <p className="m-auto mt-4 max-w-lg  text-center info-text">
+        Hear genuine stories from our satisfied customers about their
+        exceptional experiences with us.
+      </p>
+
+      <div className="mt-24 flex flex-1 justify-evenly items-center max-lg:flex-col gap-14">
+        {reviews.map((review, index) => (
+          <ReviewCard
+            key={index}
+            imgURL={review.imgURL}
+            customerName={review.customerName}
+            rating={review.rating}
+            feedback={review.feedback}
+          />
+        ))}
       </div>
     </section>
   );
